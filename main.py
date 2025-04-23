@@ -1,5 +1,7 @@
 from helpers import insertionSort
 import random
+import time
+import matplotlib.pyplot as plt
 
 def block_sort(input_arr, block_size):
     blocks = [] # nested lists to store blocks
@@ -12,7 +14,7 @@ def block_sort(input_arr, block_size):
             blocks.append(temp_block)
             temp_block = []
         temp_block.append(num)
-    temp_block.sort()
+
     blocks.append(temp_block)
 
     result = []
@@ -32,7 +34,41 @@ def block_sort(input_arr, block_size):
         
 
 
-test_arr = list(range(1, 100000))
-random.shuffle(test_arr)
-r = block_sort(test_arr, 1000)
+test_arr = [3, 2, 1]
+print(len(test_arr))
+r = block_sort(test_arr, 64)
 print(r)
+# test_arr = list(range(1, 100000))
+# random.shuffle(test_arr)
+# r = block_sort(test_arr, 1000)
+# print(r)
+
+# def benchmark(min, max, step, num_trials):
+#     times = []
+#     for i in range(min, max, step):
+#         trial_times = 0
+#         for j in range(num_trials):
+#             test_arr = list(range(1, i))
+#             random.shuffle(test_arr)
+#             start = time.time()
+#             block_sort(test_arr, 64)
+#             trial_times += time.time() - start
+#         times.append((i, trial_times/num_trials))
+#         print(f"Sorting {i} elements done")
+#     return times
+
+# b = benchmark(20, 10000, 1, 20)
+# print(b)
+
+# # Example array of tuples
+
+# # Split into x and y coordinates
+# x, y = zip(*b)
+
+# # Plot
+# plt.plot(x, y, marker='o')
+# plt.xlabel('X')
+# plt.ylabel('Y')
+# plt.title('Plot from Tuples')
+# plt.grid(True)
+# plt.show()
